@@ -19,7 +19,7 @@
         var index = new google.visualization.Table(document.getElementById('table_div'));
         var cssClassNames = {headerRow: 'bigAndBoldClass',
 hoverTableRow: 'highlightClass'};
-        index.draw(data, {allowhtml: true, showRowNumber: true, width: '100%', height: '100%', 'cssClassNames':cssClassNames});
+        index.draw(data, {allowhtml: true, showRowNumber: false, width: '100%', height: '100%', 'cssClassNames':cssClassNames});
       }
     </script>
   </head>  
@@ -27,4 +27,5 @@ hoverTableRow: 'highlightClass'};
       <div id="table_div">
       </div>
   </body>
+
 </html>
