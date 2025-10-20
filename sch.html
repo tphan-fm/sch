@@ -1,0 +1,30 @@
+
+<html>
+  <head>
+    <style>
+     
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+      function drawTable() {
+        var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1awJkzoqrObVCie-ecu-kb9UT8YDJJZf7dleANuQrs0Q/edit?usp=sharing');
+        query.send(handleQueryResponse);   
+      }
+      
+      function handleQueryResponse(response) {
+        var data = response.getDataTable();
+        var index = new google.visualization.Table(document.getElementById('table_div'));
+        var cssClassNames = {headerRow: 'bigAndBoldClass',
+hoverTableRow: 'highlightClass'};
+        index.draw(data, {allowhtml: true, showRowNumber: false, width: '100%', height: '100%', 'cssClassNames':cssClassNames});
+      }
+    </script>
+  </head>  
+  <body>
+      <div id="table_div">
+      </div>
+  </body>
+
+</html>
