@@ -1,0 +1,92 @@
+.my-header-row-class {
+  background-color: red;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.my-table-cell-class {
+  margin: 20px;
+  padding: 80px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+}
+
+#table_div td {
+  padding: 5px;
+  border-width: 1px;
+}
+
+#table_div {
+  border-width: 1px;
+}
+
+#table_div th {
+  margin-bottom: 15px;
+  padding: 15px;
+  border-width: 1px;
+}
+#outerTable .top {
+  font-family: "Arial", sans-serif;
+  background-color: #ccc;
+  padding: 15px;
+  border-width: 1px;
+}
+
+/*WEEK HEADER*/
+#table_div th:nth-child(1) {
+  padding: 3px !important;
+  width: 20px !important;
+  color: Black;
+}
+
+/*WEEKS #table_div td:nth-child(1) */
+#table_div td:nth-child(1) {
+  /*background-color: rgba(76, 175, 80, 0.9);*/
+  font-size: 10px !important;
+  /*margin:3px !important;*/
+  /*width: 9 px; /* Adjust as needed */
+  /*height: 9 px; /* Must be equal to width */
+  /*border-radius: 20%;*/
+  /*background-color: rgba(0,0,0,.8); Example background */
+  /*border: 2px solid #333;  Example border */
+  /*display: flex; /* For centering the date */
+  justify-content: center; /* For horizontal centering */
+  align-items: center; /* For vertical centering */
+  font-weight: bold;
+  color: black;
+}
+
+/*WEEKS
+      #table_div td:nth-child(1) {
+        padding:3px !important;
+        width: 20px !important;
+        color : Black; 
+        text-align: center;
+        font-weight: bold;
+      }*/
+
+/*DATES*/
+#table_div td:nth-child(2) {
+  /*
+        background-color: lightblue;
+        color: darkblue; */
+  font-weight: bold;
+  padding: 3px !important;
+  width: 12px !important;
+  font-size: 10px !important;
+  text-transform: uppercase;
+}
+
+/*
+      .bigAndBoldClass th:nth-child(1) { 
+        padding:3px !important;
+        width: 20px !important;
+        color : Black; 
+      }
+      .bigAndBoldClass th:nth-child(2) { 
+        padding:3px !important;
+        width: 20px !important;
+        font-size :5px !important;
+        color : Black; 
+      }
+      */
