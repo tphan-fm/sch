@@ -2,6 +2,7 @@
   background-color: red;
   font-weight: bold;
   font-size: 14px;
+  
 }
 
 .my-table-cell-class {
@@ -20,10 +21,23 @@
   border-width: 1px;
 }
 
+#table_wrapper {
+  border: 1px solid #888;
+  border-collapse: collapse;
+}
+
+#outerTable{
+  border: 0px solid black;
+  border-collapse: collapse;
+}
+
+/*HEADER==============*/
 #table_div th {
+  text-transform: uppercase;
   margin-bottom: 15px;
   padding: 15px;
   border-width: 1px;
+  font-size: 12px !important;
 }
 #outerTable .top {
   font-family: "Arial", sans-serif;
