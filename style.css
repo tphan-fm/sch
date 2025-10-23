@@ -19,7 +19,6 @@
 
 #table_wrapper {
   border: 1px solid #D3D3D3;
-  
   border-collapse: collapse;
 }
 
@@ -97,7 +96,7 @@
 /*TOPICS=================================*/
 #table_div td:nth-child(3) {
   padding-left: 8px !important;
-
+  width:200px !important;
   
 }
 
