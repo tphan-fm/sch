@@ -60,7 +60,7 @@
 /*WEEK HEADER*/
 #table_div th:nth-child(1) {
   padding: 3px !important;
-  width: 20px !important;
+  width: 16px !important;
   color: Black;
 }
 
