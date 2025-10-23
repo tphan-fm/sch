@@ -1,24 +1,13 @@
-.my-header-row-class {
-  background-color: red;
-  font-weight: bold;
-  font-size: 14px;
-  
-}
-
-.my-table-cell-class {
-  margin: 20px;
-  padding: 80px;
-  border: 1px solid #ccc;
-  font-size: 12px;
-}
-
+/* TABLE CELLS======= */
 #table_div td {
   padding: 5px;
   border-width: 1px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px !important;
 }
 
 #table_div {
-  border-width: 1px;
+  border-width: 0px;
 }
 
 #table_wrapper {
@@ -31,19 +20,26 @@
   border-collapse: collapse;
 }
 
-/*HEADER==============*/
-#table_div th {
-  text-transform: uppercase;
-  margin-bottom: 15px;
-  padding: 15px;
+/* COMPUTER SCIENCE 1 */
+#outerTable .top {
+  font-family: "Arial", sans-serif;
+  background-color: #990000;
+  color: white;
+  padding: 11px;
   border-width: 1px;
   font-size: 12px !important;
 }
-#outerTable .top {
-  font-family: "Arial", sans-serif;
-  background-color: #ccc;
-  padding: 15px;
+
+/*HEADER MENU==============*/
+#table_div th {
+  text-transform: uppercase;
+  margin-bottom: 15px;
   border-width: 1px;
+  font-size: 12px !important;
+  padding: 5px;
+  border-width: 1px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px !important;
 }
 
 /*WEEK HEADER*/
@@ -53,54 +49,34 @@
   color: Black;
 }
 
-/*WEEKS #table_div td:nth-child(1) */
+/*WEEKS NUMBER ======================== */
 #table_div td:nth-child(1) {
-  /*background-color: rgba(76, 175, 80, 0.9);*/
+  margin: auto;
+  padding: 10px;
   font-size: 10px !important;
-  /*margin:3px !important;*/
-  /*width: 9 px; /* Adjust as needed */
-  /*height: 9 px; /* Must be equal to width */
-  /*border-radius: 20%;*/
-  /*background-color: rgba(0,0,0,.8); Example background */
-  /*border: 2px solid #333;  Example border */
-  /*display: flex; /* For centering the date */
-  justify-content: center; /* For horizontal centering */
-  align-items: center; /* For vertical centering */
+  align-items: center; 
   font-weight: bold;
   color: black;
 }
 
-/*WEEKS
-      #table_div td:nth-child(1) {
-        padding:3px !important;
-        width: 20px !important;
-        color : Black; 
-        text-align: center;
-        font-weight: bold;
-      }*/
-
-/*DATES*/
+/*DATES=================================*/
 #table_div td:nth-child(2) {
-  /*
-        background-color: lightblue;
-        color: darkblue; */
-  font-weight: bold;
-  padding: 3px !important;
-  width: 12px !important;
+  padding: 13px !important;
+  width: 20px !important;
   font-size: 10px !important;
   text-transform: uppercase;
 }
 
-/*
-      .bigAndBoldClass th:nth-child(1) { 
-        padding:3px !important;
-        width: 20px !important;
-        color : Black; 
-      }
-      .bigAndBoldClass th:nth-child(2) { 
-        padding:3px !important;
-        width: 20px !important;
-        font-size :5px !important;
-        color : Black; 
-      }
-      */
+/*TOPICS=================================*/
+#table_div td:nth-child(3) {
+  padding: 13px !important;
+  font-size: 12px !important;
+}
+
+/*TOPICS=================================*/
+#table_div td:nth-child(4) {
+  padding: 13px !important;
+  font-size: 12px !important;
+  
+}
+
