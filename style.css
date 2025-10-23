@@ -24,7 +24,7 @@
 #outerTable .top {
   font-family: "Helvetica", sans-serif;
   background-color: #990000;
-  padding: 6px;
+  padding: 5px;
   border-width: 1px;
   font-size: 12px !important;
   text-align:left;
@@ -32,18 +32,19 @@
 
 /* TITLE */
 #outerTable .title {
-  padding: 3px;
   color: white;
   text-align:left;
-  
+  float: left;
 }
 /* LINKS */
 #outerTable .links {
-  padding: 3px;
-  color: #e37474;
   text-align:right;
   float: right;
 }
+#outerTable .links a{
+  color: #e37474;
+}
+
 
 /*HEADER MENU==============*/
 #table_div th {
