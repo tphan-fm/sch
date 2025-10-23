@@ -18,12 +18,13 @@
 }
 
 #table_wrapper {
-  border: 1px solid #D3D3D3;
+  border: 2px solid #D3D3D3;
+  
   border-collapse: collapse;
 }
 
 #outerTable{
-  border:0px solid #999999;
+  border: 0px solid #999999;
   border-collapse: collapse;
 }
 
@@ -58,13 +59,11 @@
 #table_div th {
   text-transform: uppercase;
   /*margin-bottom: 15px;*/
-  
-
-  
   font-size: 12px !important;
   padding: 5px;
-  font-family: Helvetica, Arial, sans-serif;
+  /*font-family: Helvetica, Arial, sans-serif;*/
   font-size: 11px !important;
+  background-color: #eee;
 }
 
 /*WEEK HEADER*/
@@ -76,19 +75,19 @@
 
 /*WEEKS NUMBER ======================== */
 #table_div td:nth-child(1) {
-  font-size: 10px !important;
+   font-size: 10px !important;
    text-align: center;
-  font-weight: bold;
-  color: black;
+   font-weight: bold;
+   color: black;
 }
 
 /*DATES=================================*/
 #table_div td:nth-child(2) {
-  font-family: Helvetica, Arial, sans-serif;
+  /*font-family: Helvetica, Arial, sans-serif;*/
   padding: 3px !important;
   width:60px !important;
-  font-size: 10px !important;
-  text-transform: uppercase;
+  /*font-size: 10px !important;*/
+  /*text-transform: uppercase;*/
   text-align: center;
   
 }
@@ -96,7 +95,7 @@
 /*TOPICS=================================*/
 #table_div td:nth-child(3) {
   padding-left: 8px !important;
-  width:200px !important;
+
   
 }
 
