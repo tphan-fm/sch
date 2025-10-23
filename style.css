@@ -25,10 +25,25 @@
   font-family: "Arial", sans-serif;
   background-color: #990000;
   color: white;
-  padding: 5px;
+  padding: 6px;
   border-width: 1px;
   font-size: 12px !important;
+  text-align:left;
 }
+
+/* LINKS */
+#outerTable .links {
+  font-family: "Helvetica", sans-serif;
+  background-color: #ccc;
+  
+  padding: 6px;
+  border-width: 1px;
+  font-size: 12px !important;
+  text-align:left;
+  
+}
+
+
 
 /*HEADER MENU==============*/
 #table_div th {
