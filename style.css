@@ -22,23 +22,26 @@
 
 /* COMPUTER SCIENCE 1 */
 #outerTable .top {
-  font-family: "Arial", sans-serif;
+  font-family: "Helvetica", sans-serif;
   background-color: #990000;
-  color: white;
   padding: 6px;
   border-width: 1px;
   font-size: 12px !important;
   text-align:left;
 }
 
+/* TITLE */
+#outerTable .title {
+  padding: 3px;
+  color: white;
+  text-align:left;
+  
+}
 /* LINKS */
 #outerTable .links {
-  font-family: "Helvetica", sans-serif;
   padding: 3px;
- 
   color: #e37474;
   text-align:right;
-  
 }
 
 /*HEADER MENU==============*/
