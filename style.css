@@ -1,10 +1,10 @@
-/* TABLE CELLS======= */
-
 body{
   margin: 0;
   padding: 0;
 }
 
+
+/* TABLE CELLS======= */
 #table_div td {
   padding: 5px;
   font-family: 'Roboto'; font-size: 12px; color:#333;
@@ -24,7 +24,7 @@ body{
 }
 
 #table_wrapper {
-  border: 2px solid #D3D3D3;
+  border: 0px solid #D3D3D3;
   
   border-collapse: collapse;
 }
