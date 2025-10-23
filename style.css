@@ -43,8 +43,6 @@
   
 }
 
-
-
 /*HEADER MENU==============*/
 #table_div th {
   text-transform: uppercase;
@@ -60,7 +58,7 @@
 /*WEEK HEADER*/
 #table_div th:nth-child(1) {
   padding: 3px !important;
-  width: 16px !important;
+  width: 6px !important;
   color: Black;
 }
 
