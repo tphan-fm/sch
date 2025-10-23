@@ -1,7 +1,7 @@
 /* TABLE CELLS======= */
 #table_div td {
   padding: 5px;
- 
+  font-family: 'Roboto'; font-size: 12px; color:#333;
   
   
   text-rendering: optimizeLegibility;
@@ -51,7 +51,7 @@
   float: right;
 }
 #outerTable .linksRed a{
-  color: ##ff9d96;
+  color: #ff9d96;
 }
 
 
@@ -96,7 +96,7 @@
 #table_div td:nth-child(3) {
   padding-left: 8px !important;
 
-  
+  width:33% !important;
 }
 
 /*DUEDATES=================================*/
