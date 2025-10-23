@@ -5,6 +5,9 @@
   /*font-family: Helvetica, Arial, sans-serif; */
   text-rendering: optimizeLegibility;
   font-size: 12px !important;
+  -webkit-font-smoothing: antialiased; 
+  -webkit-font-smoothing: subpixel-antialiased;
+  
 }
 
 #table_div {
