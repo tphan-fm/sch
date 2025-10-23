@@ -3,7 +3,7 @@
   padding: 5px;
   border-width: 1px;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 10px !important;
+  font-size: 11px !important;
 }
 
 #table_div {
@@ -31,7 +31,7 @@
 }
 
 /* TITLE */
-#outerTable .title {
+#outerTable .titleRed {
   color: white;
   text-align:left;
   float: left;
@@ -66,8 +66,6 @@
 
 /*WEEKS NUMBER ======================== */
 #table_div td:nth-child(1) {
-  
-  
   font-size: 10px !important;
    text-align: center;
   font-weight: bold;
@@ -88,14 +86,12 @@
 /*TOPICS=================================*/
 #table_div td:nth-child(3) {
   padding-left: 8px !important;
-  font-size: 10px !important;
+
   
 }
 
-/*TOPICS=================================*/
+/*DUEDATES=================================*/
 #table_div td:nth-child(4) {
   padding-left: 8px !important;
-  font-size: 10px !important;
-  
 }
 
