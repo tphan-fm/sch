@@ -34,12 +34,10 @@
 /* LINKS */
 #outerTable .links {
   font-family: "Helvetica", sans-serif;
-  background-color: #eee;
-  
-  padding: 6px;
-  border-width: 1px;
-  font-size: 12px !important;
-  text-align:left;
+  padding: 3px;
+ 
+  color: #e37474;
+  text-align:right;
   
 }
 
