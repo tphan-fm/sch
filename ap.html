@@ -1,23 +1,158 @@
-<html>
 
+<html>
+<!--  AP  -->
 <head>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
- 
+
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript"></script>
-  <script src="script.js"></script>
-  <link rel="stylesheet" href="style.css">
-  
 
-  
+  <script>
+    google.charts.load("current", {
+      packages: ["table"]
+    });
+    google.charts.setOnLoadCallback(drawTable);
+
+    function drawTable() {
+      var query = new google.visualization.Query(
+        "https://docs.google.com/spreadsheets/d/1P__PMJv0iPRJT-NDLlDoWYv3x6WR9ppypWtEd9K-C3o/edit?usp=sharing"
+      );
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+      var data = response.getDataTable();
+      // table = you can dynamically apply the color column to the table
+      var index = new google.visualization.Table(
+        document.getElementById("table_div")
+      );
+      var cssClassNames = {
+        headerRow: "bigAndBoldClass",
+        hoverTableRow: "highlightClass"
+      };
+      index.draw(data, {
+        sort: "disable",
+        allowhtml: true,
+        showRowNumber: false,
+        interpolateNulls: true,
+        width: "100%",
+        height: "100%",
+        cssClassNames: cssClassNames
+      });
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* TABLE CELLS======= */
+    #table_div td {
+      padding: 5px;
+      font-family: 'Roboto';
+      font-size: 12px;
+      color: #333;
+      text-rendering: optimizeLegibility;
+      font-size: 12px !important;
+      -webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: subpixel-antialiased;
+      border-collapse: collapse;
+    }
+
+    #table_div {
+      border-width: 0px;
+      border-collapse: collapse;
+    }
+
+    #table_wrapper {
+      border: 0px solid #D3D3D3;
+      border-collapse: collapse;
+    }
+
+    #outerTable {
+      border: 0px solid #999999;
+      border-collapse: collapse;
+    }
+
+    /* COMPUTER SCIENCE 1 */
+    #outerTable .top {
+      font-family: "Helvetica", sans-serif;
+      background-color: #990000;
+      padding: 5px;
+      border-width: 0px;
+      border-collapse: collapse;
+      font-size: 12px !important;
+      text-align: left;
+    }
+
+    /* TITLE */
+    #outerTable .titleRed {
+      color: white;
+      text-align: left;
+      float: left;
+    }
+
+    /* LINKS */
+    #outerTable .linksRed {
+      text-align: right;
+      float: right;
+    }
+
+    #outerTable .linksRed a {
+      color: #ff9d96;
+    }
+
+    /*HEADER MENU==============*/
+    #table_div th {
+      text-transform: uppercase;
+      font-size: 12px !important;
+      padding: 5px;
+      font-size: 11px !important;
+      background-color: #eee;
+    }
+
+    /*WEEK HEADER*/
+    #table_div th:nth-child(1) {
+      padding: 3px !important;
+      width: 6px !important;
+      color: Black;
+    }
+
+    /*WEEKS NUMBER ======================== */
+    #table_div td:nth-child(1) {
+      font-size: 10px !important;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+    }
+
+    /*DATES=================================*/
+    #table_div td:nth-child(2) {
+      padding: 3px !important;
+      width: 60px !important;
+      text-align: center;
+    }
+
+    /*TOPICS=================================*/
+    #table_div td:nth-child(3) {
+      padding-left: 8px !important;
+      width: 33% !important;
+    }
+
+    /*DUEDATES=================================*/
+    #table_div td:nth-child(4) {
+      padding-left: 8px !important;
+    }
+  </style>
+
 </head>
- 
+
 <body>
   <div id="table_wrapper">
     <table id="outerTable" style="width:100%">
       <thead>
-       
-     
+
       </thead>
       <tbody>
         <tr>
@@ -30,5 +165,4 @@
 
 </body>
 
-  
 </html>
