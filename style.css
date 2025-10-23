@@ -2,8 +2,8 @@
 #table_div td {
   padding: 5px;
   border-width: 1px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 11px !important;
+  /*font-family: Helvetica, Arial, sans-serif; */
+  font-size: 12px !important;
 }
 
 #table_div {
