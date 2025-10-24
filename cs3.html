@@ -1,9 +1,9 @@
-
 <html>
-<!--  CS3  -->
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<!--  AP  -->
 
+<head>
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript"></script>
 
@@ -144,6 +144,52 @@
     #table_div td:nth-child(4) {
       padding-left: 8px !important;
     }
+
+    /* Alternating background for non-highlighted rows */
+    .week-alt-even td {
+      background: #ffffff;
+      transition: background-color 0.6s ease;
+    }
+
+    .week-alt-odd td {
+      background: #f6f6f6;
+      transition: background-color 0.6s ease;
+    }
+
+    #table_div table td {
+      background-clip: padding-box;
+    }
+
+    /* --- Prevent conflicts with inline styles --- */
+    #table_div table td {
+      background-clip: padding-box;
+    }
+
+    /* Alternating week colors */
+    .week-alt-even td {
+      background: #ffffff;
+      transition: background-color 0.6s ease;
+    }
+
+    .week-alt-odd td {
+      background: #f6f6f6;
+      transition: background-color 0.6s ease;
+    }
+
+    Highlight weeks with 5+consecutive days .day-consecutive td {
+      background: #d9ecff !important;
+      transition: background-color 0.6s ease;
+    }
+
+    /* Highlight current day */
+    .highlight-today {
+      /*background-color: #f39c12 !important;*/
+      background: #3094db;
+background: linear-gradient(180deg, rgba(48, 148, 219, 1) 17%, rgba(48, 88, 140, 1) 100%) !important;
+      color: white !important;
+      border-radius: 5%;
+      transition: background-color 0.6s ease;
+    }
   </style>
 
 </head>
@@ -162,6 +208,92 @@
         </tr>
       </tbody>
     </table>
+
+    <script>
+      function normalizeText(text) {
+        return text.replace(/\s+/g, ' ').trim();
+      }
+      // Convert "Jul 10" into Date object with correct year
+      function parseDayText(text) {
+        const parts = normalizeText(text).split(' ');
+        if (parts.length !== 2) return null;
+        const month = parts[0];
+        const day = parseInt(parts[1], 10);
+        const today = new Date();
+        let year = today.getFullYear();
+        const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
+        if (monthIndex < today.getMonth() - 6) year += 1;
+        return new Date(`${month} ${day}, ${year}`);
+      }
+
+      function highlightTable() {
+        const table = document.querySelector('#table_div table');
+        if (!table) return;
+        const rows = Array.from(table.querySelectorAll('tr')).filter(r => r.cells.length > 1);
+        // --- Collect day cells with dates ---
+        const dayCells = [];
+        rows.forEach(row => {
+          Array.from(row.cells).forEach(td => {
+            const t = normalizeText(td.textContent);
+            const dateObj = parseDayText(t);
+            if (dateObj) dayCells.push({
+              td,
+              row,
+              text: t,
+              dateObj
+            });
+          });
+        });
+        // --- Alternating week colors ---
+        let toggle = false;
+        rows.forEach(row => {
+          row.classList.remove('week-alt-even', 'week-alt-odd');
+          if (!row.classList.contains('day-consecutive')) {
+            row.classList.toggle('week-alt-odd', toggle);
+            row.classList.toggle('week-alt-even', !toggle);
+          }
+          if (row.cells[0] && normalizeText(row.cells[0].textContent) !== '') toggle = !toggle;
+        });
+        // --- Highlight consecutive day sequences globally ---
+        dayCells.sort((a, b) => a.dateObj - b.dateObj);
+        for (let i = 0; i <= dayCells.length - 5; i++) {
+          let seq = [dayCells[i]];
+          for (let j = i; j < dayCells.length - 1; j++) {
+            const diff = (dayCells[j + 1].dateObj - dayCells[j].dateObj) / (1000 * 60 * 60 * 24);
+            if (diff === 1) seq.push(dayCells[j + 1]);
+            else break;
+          }
+          if (seq.length >= 5) seq.forEach(c => c.row.classList.add('day-consecutive'));
+        }
+        // --- Highlight today ---
+        const today = new Date();
+        const todayCell = dayCells.find(c =>
+          c.dateObj.getDate() === today.getDate() &&
+          c.dateObj.getMonth() === today.getMonth() &&
+          c.dateObj.getFullYear() === today.getFullYear()
+        );
+        if (todayCell) {
+          todayCell.td.classList.add('highlight-today');
+          todayCell.td.style.animation = 'fade-in 1s ease forwards';
+          todayCell.td.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+        }
+      }
+      // --- Use MutationObserver to detect table load instead of polling ---
+      const observer = new MutationObserver((mutations, obs) => {
+        const table = document.querySelector('#table_div table');
+        if (table && table.querySelectorAll('tr').length > 0) {
+          highlightTable();
+          obs.disconnect(); // stop observing
+        }
+      });
+      observer.observe(document.querySelector('#table_div'), {
+        childList: true,
+        subtree: true
+      });
+    </script>
 
 </body>
 
