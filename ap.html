@@ -638,6 +638,19 @@ const observer = new MutationObserver((mutations, obs) => {
 
 observer.observe(document.querySelector('#table_div'), { childList: true, subtree: true });
 
+      
+      function waitForTable() {
+  const table = document.querySelector("#table_div table");
+  if (table) {
+    highlightToday();
+    scrollToToday();
+  } else {
+    setTimeout(waitForTable, 300); // check again in 0.3s
+  }
+}
+
+window.addEventListener("load", waitForTable);
+
     
     </script>
 
