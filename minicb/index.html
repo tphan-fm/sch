@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini CodingBat - Python Practice</title>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.3/full/pyodide.js"></script>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      background: #f9fafb;
+      color: #222;
+      padding: 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 { text-align: center; }
+    select, input {
+      font-size: 1em;
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 220px;
+      font-family: monospace;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      resize: vertical;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover { background: #1e40af; }
+    pre {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 10px;
+      white-space: pre-wrap;
+      margin-top: 1em;
+    }
+    .problem {
+      background: #eef2ff;
+      border-radius: 8px;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mini CodingBat - Python Practice</h1>
+
+  <label><b>Your Name:</b></label><br>
+  <input type="text" id="studentName" placeholder="Enter your name" style="width:100%;"><br><br>
+
+  <label for="problemSelect"><b>Select Problem:</b></label>
+  <select id="problemSelect"></select>
+
+  <div class="problem">
+    <h3 id="problemTitle"></h3>
+    <p id="problemDesc"></p>
+  </div>
+
+  <textarea id="code" spellcheck="false"></textarea>
+  <br>
+  <button id="runBtn">Run Tests</button>
+  <pre id="output">Loading Pyodide...</pre>
+
+  <script>
+    const GOOGLE_SHEETS_WEBAPP = "https://script.google.com/macros/s/AKfycbwRFJwm7Umr2LWW7U5Z_ZxZRMqZ_LYotqkU2fg7Ka4i8BOWhHLy11Cdni5966Wiv8TFew/exec";
+
+    const problems = {
+      "both_even": {
+        title: "Both Even",
+        desc: "Return True if both numbers are even.",
+        starter: `def both_even(a, b):
+    # your code here
+    return a % 2 == 0 and b % 2 == 0`,
+        tests: [
+          ["both_even(2, 4)", true],
+          ["both_even(2, 5)", false],
+          ["both_even(3, 6)", false]
+        ]
+      },
+      "sum_double": {
+        title: "Sum Double",
+        desc: "Return the sum of two ints. If the values are the same, return double their sum.",
+        starter: `def sum_double(a, b):
+    # your code here
+    if a == b:
+        return 2 * (a + b)
+    else:
+        return a + b`,
+        tests: [
+          ["sum_double(1, 2)", 3],
+          ["sum_double(3, 3)", 12],
+          ["sum_double(2, -2)", 0]
+        ]
+      }
+    };
+
+    const select = document.getElementById("problemSelect");
+    for (const key in problems) {
+      const opt = document.createElement("option");
+      opt.value = key;
+      opt.textContent = problems[key].title;
+      select.appendChild(opt);
+    }
+
+    const titleEl = document.getElementById("problemTitle");
+    const descEl = document.getElementById("problemDesc");
+    const editor = document.getElementById("code");
+
+    function loadProblem(key) {
+      const p = problems[key];
+      titleEl.textContent = p.title;
+      descEl.textContent = p.desc;
+      editor.value = p.starter;
+      document.getElementById("output").textContent = "Ready! Click Run Tests.";
+    }
+
+    select.addEventListener("change", e => loadProblem(e.target.value));
+
+    ["paste", "copy", "cut"].forEach(evt =>
+      editor.addEventListener(evt, e => {
+        e.preventDefault();
+        alert("Copy/paste is disabled for this exercise!");
+      })
+    );
+
+    let pyodideReady = loadPyodide();
+
+    async function runTests() {
+      const pyodide = await pyodideReady;
+      const code = editor.value;
+      const key = select.value;
+      const { tests } = problems[key];
+      const student = document.getElementById("studentName").value || "Anonymous";
+      let results = "";
+      let passed = 0;
+
+      try {
+        await pyodide.runPythonAsync(code);
+        for (const [expr, expected] of tests) {
+          let got = pyodide.runPython(expr);
+          const ok = got == expected;
+          if (ok) passed++;
+          results += `${expr} → ${got} (${ok ? "✅" : "❌ expected " + expected})\n`;
+        }
+      } catch (err) {
+        results = "Error: " + err;
+      }
+
+      const score = `${passed}/${tests.length}`;
+      document.getElementById("output").textContent = results + "\nScore: " + score;
+
+      // Log to Google Sheets
+      fetch(GOOGLE_SHEETS_WEBAPP, {
+        method: "POST",
+        body: JSON.stringify({
+          student: student,
+          problem: problems[key].title,
+          code: code,
+          result: results,
+          score: score
+        }),
+        headers: { "Content-Type": "application/json" }
+      }).catch(err => console.error("Logging failed:", err));
+    }
+
+    document.getElementById("runBtn").addEventListener("click", runTests);
+    pyodideReady.then(() => loadProblem("both_even"));
+  </script>
+</body>
+</html>
